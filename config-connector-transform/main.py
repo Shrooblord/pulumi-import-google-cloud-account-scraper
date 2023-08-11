@@ -89,6 +89,7 @@ resource_type_mappings = {
     "ComputeForwardingRule": {
         "pulumi_type": "gcp:compute/forwardingRule:ForwardingRule"
     },
+    "ComputeHealthCheck": {"pulumi_type": "gcp:compute/healthCheck:HealthCheck"},
     "ComputeNetwork": {"pulumi_type": "gcp:compute/network:Network"},
     "ComputeHTTPHealthCheck": {
         "pulumi_type": "gcp:compute/httpHealthCheck:HttpHealthCheck"
