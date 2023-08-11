@@ -105,6 +105,7 @@ resource_type_mappings = {
     "ComputeTargetPool": {"pulumi_type": "gcp:compute/targetPool:TargetPool"},
     "ComputeSnapshot": {"pulumi_type": "gcp:compute/snapshot:Snapshot"},
     "ContainerCluster": {"pulumi_type": "gcp:container/cluster:Cluster"},
+    "ContainerNodePool": {"pulumi_type": "gcp:container/nodePool:NodePool"},
     "IAMServiceAccount": {
         "pulumi_type": "gcp:serviceAccount/account:Account",
         "get_id": get_iam_service_account_id,
