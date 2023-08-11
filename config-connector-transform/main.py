@@ -94,6 +94,9 @@ resource_type_mappings = {
         "pulumi_type": "gcp:compute/instanceGroup:InstanceGroup",
         "get_id": get_compute_instance_id,
     },
+    "ComputeInstanceTemplate": {
+        "pulumi_type": "gcp:compute/instanceTemplate:InstanceTemplate",
+    },
     "ComputeSubnetwork": {"pulumi_type": "gcp:compute/subnetwork:Subnetwork"},
     "ComputeTargetPool": {"pulumi_type": "gcp:compute/targetPool:TargetPool"},
     "ComputeSnapshot": {"pulumi_type": "gcp:compute/snapshot:Snapshot"},
