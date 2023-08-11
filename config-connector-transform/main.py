@@ -55,6 +55,22 @@ def get_compute_instance_id(k8s_resource):
     return f"{k8s_resource['metadata']['annotations']['cnrm.cloud.google.com/project-id']}/{k8s_resource['spec']['zone']}/{k8s_resource['metadata']['name']}"
 
 
+def get_container_node_pool_id(k8s_resource):
+    project_id = k8s_resource["metadata"]["annotations"][
+        "cnrm.cloud.google.com/project-id"
+    ]
+    location = k8s_resource["spec"]["location"]
+    cluster_name = k8s_resource["spec"]["clusterRef"]["external"]
+    node_pool_name = k8s_resource["metadata"]["name"]
+
+    return (
+        f"projects/{project_id}/"
+        f"locations/{location}/"
+        f"clusters/{cluster_name}/"
+        f"nodePools/{node_pool_name}"
+    )
+
+
 def get_storage_bucket_id(k8s_resource):
     return f"b/{k8s_resource['spec']['resourceRef']['external']}"
 
@@ -105,7 +121,10 @@ resource_type_mappings = {
     "ComputeTargetPool": {"pulumi_type": "gcp:compute/targetPool:TargetPool"},
     "ComputeSnapshot": {"pulumi_type": "gcp:compute/snapshot:Snapshot"},
     "ContainerCluster": {"pulumi_type": "gcp:container/cluster:Cluster"},
-    "ContainerNodePool": {"pulumi_type": "gcp:container/nodePool:NodePool"},
+    "ContainerNodePool": {
+        "pulumi_type": "gcp:container/nodePool:NodePool",
+        "get_id": get_container_node_pool_id,
+    },
     "IAMServiceAccount": {
         "pulumi_type": "gcp:serviceAccount/account:Account",
         "get_id": get_iam_service_account_id,
