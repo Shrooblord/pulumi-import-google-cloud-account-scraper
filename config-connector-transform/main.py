@@ -62,6 +62,10 @@ def get_iam_service_account_id(k8s_resource):
     return f"{k8s_resource['spec']['resourceID']}@{k8s_resource['metadata']['annotations']['cnrm.cloud.google.com/project-id']}.iam.gserviceaccount.com"
 
 
+def get_iam_policy_member_id(k8s_resource):
+    return f"{k8s_resource['spec']['resourceRef']['external']}/{k8s_resource['metadata']['name']}"
+
+
 def get_service_id(k8s_resource):
     return f"{args.project}/{k8s_resource['metadata']['name']}"
 
@@ -95,6 +99,10 @@ resource_type_mappings = {
     "IAMServiceAccount": {
         "pulumi_type": "gcp:serviceAccount/account:Account",
         "get_id": get_iam_service_account_id,
+    },
+    "IAMPolicyMember": {
+        "pulumi_type": "gcp:projects/iAMMember:IAMMember",
+        "get_id": get_iam_policy_member_id,
     },
     # TODO: These fail import with e.g. 'Preview failed: resource
     # 'projects/438338752289/sinks/a-default' does not exist'. We need to figure
