@@ -80,7 +80,11 @@ def get_iam_service_account_id(k8s_resource):
 
 
 def get_iam_policy_member_id(k8s_resource):
-    return f"{k8s_resource['spec']['resourceRef']['external']}/{k8s_resource['metadata']['name']}"
+    resource_name = k8s_resource["metadata"]["name"]
+    role = k8s_resource["spec"]["role"]
+    member = k8s_resource["spec"]["member"]
+
+    return f"{resource_name} {role} {member}"
 
 
 def get_service_id(k8s_resource):
