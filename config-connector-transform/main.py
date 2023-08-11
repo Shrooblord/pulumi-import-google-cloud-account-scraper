@@ -75,6 +75,9 @@ resource_type_mappings = {
     "ArtifactRegistryRepository": {
         "pulumi_type": "gcp:artifactregistry/repository:Repository"
     },
+    "ComputeBackendService": {
+        "pulumi_type": "gcp:compute/backendService:BackendService"
+    },
     "ComputeDisk": {
         "pulumi_type": "gcp:compute/disk:Disk",
     },
