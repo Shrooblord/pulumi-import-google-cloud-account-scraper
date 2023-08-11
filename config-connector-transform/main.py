@@ -104,6 +104,7 @@ resource_type_mappings = {
     "ComputeSubnetwork": {"pulumi_type": "gcp:compute/subnetwork:Subnetwork"},
     "ComputeTargetPool": {"pulumi_type": "gcp:compute/targetPool:TargetPool"},
     "ComputeSnapshot": {"pulumi_type": "gcp:compute/snapshot:Snapshot"},
+    "ContainerCluster": {"pulumi_type": "gcp:container/cluster:Cluster"},
     "IAMServiceAccount": {
         "pulumi_type": "gcp:serviceAccount/account:Account",
         "get_id": get_iam_service_account_id,
